@@ -22,7 +22,7 @@ for name in names:
 # Задание 3
 # Необходимо вывести имена всех учеников из списка, рядом с именем вывести пол ученика
 
-"""
+
 is_male = {
   'Оля': False,  # если True, то пол мужской
   'Петя': True,
@@ -34,12 +34,12 @@ names = ['Оля', 'Петя', 'Вася', 'Маша']
 
 for name in names:
 
-    if is_male.values() == True:
+    if is_male[name]:
         print(name + " мужчина")
     else:
         print(name + " женщина")
 
-"""
+
 
 
 #########PODUMAT!!!!!
