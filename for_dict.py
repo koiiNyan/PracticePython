@@ -93,6 +93,10 @@ is_male = {
   'Миша': True,
 }
 # ???
+# Пример вывода:
+# В классе 2a 2 девочки и 0 мальчика.
+# В классе 3c 0 девочки и 2 мальчика.
+
 
 for students in school:
   names = [name['first_name'] for name in students['students']]
@@ -105,3 +109,42 @@ for students in school:
       gend['девочки'] += 1
 
   print('В классе {} {} девочки и {} мальчики'.format(students['class'], gend['девочки'], gend['мальчики']))
+
+
+  # Задание 5
+# По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков.
+school = [
+  {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}, {'first_name': 'Миша'}]},
+  {'class': '3c', 'students': [{'first_name': 'Олег'}, {'first_name': 'Миша'}, {'first_name': 'Оля'}]},
+]
+is_male = {
+  'Маша': False,
+  'Оля': False,
+  'Олег': True,
+  'Миша': True,
+}
+# ???
+
+# Пример вывода:
+# Больше всего мальчиков в классе 3c
+# Больше всего девочек в классе 2a
+
+
+for students in school:
+  names = [name['first_name'] for name in students['students']]
+  gend = {'девочек': 0, 'мальчиков': 0}
+
+  for name in names:
+    if is_male[name]:
+      gend['мальчиков'] += 1
+    else:
+      gend['девочек'] += 1
+
+  gend_v = list(gend.values())
+
+
+  for key, value in gend.items():
+    if value == max(gend_v):
+      print("Больше всего {} в классе {}".format(key, students['class']))
+    if value == min(gend_v):
+      print("Меньше всего {} в классе {}".format(key, students['class']))
