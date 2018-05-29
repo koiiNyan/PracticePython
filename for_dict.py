@@ -20,7 +20,8 @@ for row in students:
     counter.setdefault(row['first_name'], 0)
     counter[row['first_name']] += 1
 
-print(counter)
+for key, value in counter.items():
+  print ("Имя {} повторяется {} раз".format(key, value))
 
 
 # Задание 2
@@ -64,11 +65,43 @@ school_students = [
 # Пример вывода:
 # Самое частое имя в классе 1: Вася
 # Самое частое имя в классе 2: Маша
-counter = {}
-for row in school_students[0:][0:]:
-  for row in school_students[0:]:
-    counter.setdefault(row[0]['first_name'], 0)
-    counter[row[0]['first_name']] += 1
-print(counter.keys())
 
 
+for class_num, class_stud in enumerate(school_students, 1):
+  names = [name['first_name'] for name in class_stud]
+  count_name = {name: names.count(name) for name in names}
+  values = list(count_name.values())
+
+
+  for key, value in count_name.items():
+    if value == max(values):
+      print("Самое частое имя в классе {}: {}".format(class_num, key))
+
+
+
+
+# Задание 4
+# Для каждого класса нужно вывести количество девочек и мальчиков в нём.
+school = [
+  {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
+  {'class': '3c', 'students': [{'first_name': 'Олег'}, {'first_name': 'Миша'}]},
+]
+is_male = {
+  'Маша': False,
+  'Оля': False,
+  'Олег': True,
+  'Миша': True,
+}
+# ???
+
+for students in school:
+  names = [name['first_name'] for name in students['students']]
+  gend = {'девочки': 0, 'мальчики': 0}
+
+  for name in names:
+    if is_male[name]:
+      gend['мальчики'] += 1
+    else:
+      gend['девочки'] += 1
+
+  print('В классе {} {} девочки и {} мальчики'.format(students['class'], gend['девочки'], gend['мальчики']))
