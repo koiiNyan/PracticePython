@@ -16,8 +16,12 @@ for i in a:
 #
 #1. make a new list that has all the elements less than 5 from this list 
 #in it and print out this new list.
-b = [1, 1, 2, 3]
+b = []
 #2. Write this in one line of Python.
+for i in a:
+    if i <5:
+        b.append(i)
+
 print(b)
 #3. Ask the user for a number and return a list that contains 
 #only elements from the original list a that are smaller than 
